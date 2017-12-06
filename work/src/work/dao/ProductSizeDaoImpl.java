@@ -2,8 +2,11 @@ package work.dao;
 
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +17,10 @@ public class ProductSizeDaoImpl {
 	@Resource
 	private SessionFactory sessionFactory;
 	
-	public ProductSize findById(int id) {
- 		return (ProductSize)this.sessionFactory.getCurrentSession().get(ProductSize.class, id);
- 	    }
-
+	public List<ProductSize> findById(int id){
+		String hql = "from ProductSize where productid = ?";
+		Query query=(Query) this.sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter(0,id);
+		return query.list();
+	}
 }

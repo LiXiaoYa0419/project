@@ -21,16 +21,7 @@
 	
     <mvc:resources location="/static/" mapping="/static/**"/>
 	
-	<!-- 定义JSP文件的位置 --> 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
-	<!-- 使用annotation定义事务 -->
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	
+	 
 	 
 </beans>

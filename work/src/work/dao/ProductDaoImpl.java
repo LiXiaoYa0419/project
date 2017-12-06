@@ -31,6 +31,6 @@ public class ProductDaoImpl {
  			query.setParameter(0,producttypeid);
  			return (Product)query.uniqueResult();
  			
- 		}
+ 	}
 	
 }

@@ -1,13 +1,15 @@
 package work.dao;
 
-import java.util.List;
+
 
 import javax.annotation.Resource;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import work.entity.Product;
 import work.entity.User;
 
 @Repository
@@ -38,6 +40,11 @@ public class UserDaoImpl {
         return (User) query.uniqueResult();  
     }  
 	 
+	
+	public void updateUser(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(user);
+	}
 	 
 }
    

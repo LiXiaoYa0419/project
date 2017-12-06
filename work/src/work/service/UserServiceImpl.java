@@ -10,7 +10,9 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import work.dao.ProductDaoImpl;
 import work.dao.UserDaoImpl;
+import work.entity.Product;
 import work.entity.User;
 
 @Service
@@ -18,7 +20,7 @@ import work.entity.User;
 public class UserServiceImpl {
 	@Resource
 	private UserDaoImpl userDao;
-	
+	 
 	public User addUser(User u){
 		User u1 = this.userDao.addUser(u);
 		if(u1 != null)
@@ -42,6 +44,5 @@ public class UserServiceImpl {
 		else 
 			return null;
     }  
-	 
 	
 }

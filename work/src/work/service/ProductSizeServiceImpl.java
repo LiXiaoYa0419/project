@@ -2,6 +2,8 @@ package work.service;
 
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,10 +18,10 @@ import work.entity.ProductSize;
 public class ProductSizeServiceImpl {
 	
 	@Resource
-	private ProductSizeDaoImpl productdao;
+	private ProductSizeDaoImpl productsizedao;
 	
 	
-	public ProductSize finds(int id){
-		return (ProductSize)productdao.findById(id);
+	public List<ProductSize> finds(int id){
+		return (List<ProductSize>)productsizedao.findById(id);
 	}
 }

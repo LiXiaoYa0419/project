@@ -29,11 +29,11 @@
     <link href="<%=path %>/css/reg.css" rel="stylesheet">
 
 
-    <script src="<%=path %>/js/jquery-1.9.0.min.js.下载"></script>
-<script src="<%=path %>/js/alertAndverify.js.下载"></script>
-<script src="<%=path %>/js/jquery.SuperSlide.2.1.1.js.下载"></script>
-<script src="<%=path %>/js/layer.js.下载"></script><link rel="stylesheet" href="<%=path %>/css/layer.css" id="layuicss-skinlayercss">
-<script src="<%=path %>/js/main.js.下载"></script>
+    <script src="<%=path %>/js/jquery-1.9.0.min.js"></script>
+<script src="<%=path %>/js/alertAndverify.js"></script>
+<script src="<%=path %>/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="<%=path %>/js/layer.js"></script><link rel="stylesheet" href="<%=path %>/css/layer.css" id="layuicss-skinlayercss">
+<script src="<%=path %>/js/main.js"></script>
 </head>
 <body style="zoom: 1;">
 <div class="header">
@@ -51,7 +51,7 @@
                 <a href="http://www.5kcake.com/Page/31">
                     <li class="padleft">关于我们</li>
                 </a>
-                <a target="_blank" href="http://www.5kcake.com/WebCartsList">
+                <a target="_blank" href="<%=path%>/cart.jsp">
                     <li style="margin-right: 0;">我的购物车</li>
                 </a>
             </ul>
@@ -60,7 +60,7 @@
     <div class="index-headmid">
         <div class="index-headmidmain clearfix width1190">
             <div class="index-headmidl fl">
-                <div class="index-headlogo fl" style="background: url(/Resources/img1/logo1.png) no-repeat center"></div>
+                <div class="index-headlogo fl" style="background: url(<%=path%>/imgs/logo1.png) no-repeat center"></div>
                 <div class="index-headlogofont fl">
                     <span class="index-headlogofont1">这一刻，只因分享</span>
                     <span class="index-headlogofont2">At this moment, For sharing</span>
@@ -139,7 +139,7 @@
         <div class="register_box_1">
              
             <div class="input_list">
-                <form id="loginform">
+               
                     
                     <div class="reg_title bg_pink clearfix">
                 		<h3 class="font_s16 fl color_666">新用户注册</h3>
@@ -147,11 +147,23 @@
               
            			 </div>
            			 <div class="denglu_first">
-           			 	 <form action="<%=path %>/register/login">
+           			 	<form action="<%=path%>/register/login" method="post">
                        		用户名：<input type="text" name="loginName" id="loginName"><br/>
+                       		<%
+								Object errorinfo = request.getAttribute("errorinfo1");
+								if(errorinfo != null){
+									out.print("<font color='red'>"+errorinfo+"</font>");
+								}
+						%><br>
 							密码：&nbsp;<input type="password" name="password" id="password"><br/><br/>
+							 <%
+								Object errorinfo1 = request.getAttribute("errorinfo2");
+								if(errorinfo1 != null){
+									out.print("<font color='red'>"+errorinfo1+"</font>");
+								}
+						%>
 	               			<input type="submit" value="登录">
-               			</form>      
+               		    </form> 
                       </div>
                      
                
@@ -262,10 +274,10 @@
             </div>
         </div>
     </div>
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261743502'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261743502%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1261743502"><a href="http://www.cnzz.com/stat/website.php?web_id=1261743502" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./登陆_files/pic.gif"></a></span><script src="./登陆_files/z_stat.php" type="text/javascript"></script><script src="./登陆_files/core.php" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261743502'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261743502%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1261743502"><a href="http://www.cnzz.com/stat/website.php?web_id=1261743502" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="<%=path %>/imgs/pic.gif"></a></span><script src="./登陆_files/z_stat.php" type="text/javascript"></script><script src="./登陆_files/core.php" charset="utf-8" type="text/javascript"></script>
 
     
-    <script src="<%=path %>/js/web.login.js.下载"></script>
+    <script src="<%=path %>/js/web.login.js"></script>
 
     <script type="text/javascript">
         var url_LoginWithSms="/BntAdmin/Member/LoginWithSms";

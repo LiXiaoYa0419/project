@@ -2,7 +2,9 @@ package work.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mysql.fabric.Response;
 
+import work.entity.CartItem;
 import work.entity.Product;
 import work.entity.User;
 import work.service.UserServiceImpl;
@@ -59,19 +62,30 @@ public class UserController {
 
 		        }
 		    }
-	@RequestMapping(value="/login")
-	public String login(@RequestParam("loginName") String loginName, @RequestParam("password") String password,
-		      Model model,User u) {
-		 
-		    if (loginName.equals(u.getLoginName()) && password.equals(u.getPassword())) {
-		      model.addAttribute("loginName", loginName);
-		      return "index";
-		    } else {
-		      model.addAttribute("loginName", loginName);
-		      return "login";
-		    }
-		  }
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public String login(HttpSession session,HttpServletRequest request,User u) {
+		User u1 = this.userService.findName(u.getLoginName());
+		//System.out.println("nsx");
+		if(u1 != null){
+			if(u1.getPassword() .equals(u.getPassword())){
+				session.setAttribute("user", u1);
+				return "index";
+			}else{
+				request.setAttribute("errorinfo2", "密码填写错误");
+				return "login";
+			}
+		}else{
+			request.setAttribute("errorinfo1", "用户名填写错误");
+			return "login";
+		}
+	
 	}
+	
+
+
+	
+	
+}
 
 	
 	
