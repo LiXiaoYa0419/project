@@ -31,12 +31,14 @@
 	<script src="<%=path %>/js/layer.js"></script><link rel="stylesheet" href="<%=path %>/css/layer.css" id="layuicss-skinlayercss">
 	<script src="<%=path %>/js/main.js"></script>
 	<script type="text/javascript">
-	function addProduct()
-	{
-    	alert("添加成功,去我的购物车结算");
-    	
-	}
-	</script>
+$(function () {
+	    	if('${user.loginName }' != "" ){
+	    		$("a").remove("#b");
+	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		document.getElementById('a').innerHTML = html;
+	    	}
+	    });
+</script>
 
 </head>
 <body style="zoom: 1;">
@@ -45,17 +47,17 @@
         <div class="index-headtopmain clearfix width1190">
             <div class="index-headtoptitle fl">谢谢你长得那么好看还来光顾小5家</div>
             <ul class="index-headtoprnav fr">
-                        <a href="<%=path %>/login.jsp">
-                            <li>登录</li>
+                        <a href="<%=path %>/login.jsp" >
+                            <li id="a">登录</li>
                         </a>
-                        <a href="<%=path %>/regist.jsp">
-                            <li>注册</li>
+                        <a href="<%=path%>/regist.jsp">
+                            <li id="b">注册</li>
                         </a>
 
                 <a href="http://www.5kcake.com/Page/31">
                     <li class="padleft">关于我们</li>
                 </a>
-                <a target="_blank" href="http://www.5kcake.com/WebCartsList">
+                <a target="_blank" href="<%=path%>/product/addProductToCart?id=${p.id}">
                     <li style="margin-right: 0;">我的购物车</li>
                 </a>
             </ul>
@@ -216,25 +218,11 @@
             </div>
             
         </div>
-        <div class="cheap-js-doll">
-            <div class="cheap-js-doll-l">
-                <p style="margin-top: 30px; color: #999;">数量</p>
-            </div>
-            <div class="cheap-js-doll-r">
-                <div class="cheap-num">
-                    <div style="margin-left: 0px;" class="num-box">
-                        <span class="but-cut">-</span>
-                        <input class="but-num" value="1" type="text">
-                        <span class="but-add">+</span>
-                    </div>
-                    <p style="line-height: 65px; color: #999;">库存还剩 <span id="inv-num">9999</span>
-                    <span id="unitId">个</span></p>
-                </div>
-            </div>
-        </div>
+       
         <div class="end-submit">
             <span class="g-car"><a class="jjg" href="<%=path%>/product/content?id=${p.id}"">立即购买</a></span>
-            <span class="g-submit"><a class="jjh" target="_top" href="<%=path%>/product/addProductToCart?id=${p.id}" onClick="addProduct()">加入购物车</a></span>
+            <span class="g-submit"><a class="jjh" target="_top" href="<%=path%>/product/addProductToCart?id=${p.id}">加入购物车</a></span>
+            
         </div>
 
     </div>
@@ -255,10 +243,10 @@
     <span class="sign"></span>
     <h3>成功加入购物车！</h3>
     <p>
-        您可以<a href="<%=path%>/cart.jsp">去购物车结算</a>
+        您可以<a href="<%=path%>/product/addProductToCart?id=${p.id}">去购物车结算</a>
     </p>
 </div>
-    
+ </div>  
 </div>
 <!-- PAGE CONTENT ENDS -->
 	<div class="footer">
@@ -391,7 +379,7 @@
             </div>
         </div>
     </div>
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261743502'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261743502%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1261743502"><a href="http://www.cnzz.com/stat/website.php?web_id=1261743502" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./布朗尼_files/pic.gif"></a></span><script src="./布朗尼_files/z_stat.php" type="text/javascript"></script><script src="./布朗尼_files/core.php" charset="utf-8" type="text/javascript"></script>
+
 
     
     

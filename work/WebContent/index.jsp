@@ -33,7 +33,15 @@
 <script src="<%=path %>/js/layer.js"></script><link rel="stylesheet" href="<%=path %>/js/layer.css" id="layuicss-skinlayercss">
 <script src="<%=path %>/js/main.js"></script>
 <script type="text/javascript"src="js/jquery-2.1.4.min.js"></script>  
- 
+ <script type="text/javascript">
+$(function () {
+	    	if('${user.loginName }' != "" ){
+	    		$("a").remove("#b");
+	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		document.getElementById('a').innerHTML = html;
+	    	}
+	    });
+</script>
 </head>
 <body style="zoom: 1;">
 <div class="header">
@@ -41,8 +49,8 @@
         <div class="index-headtopmain clearfix width1190">
             <div class="index-headtoptitle fl">谢谢你长得那么好看还来光顾小5家</div>
             <ul class="index-headtoprnav fr">
-                        <a href="<%=path %>/login.jsp">
-                            <li>登录</li>
+                        <a href="<%=path %>/login.jsp" >
+                            <li id="a">登录</li>
                         </a>
                         <a href="<%=path%>/regist.jsp">
                             <li>注册</li>

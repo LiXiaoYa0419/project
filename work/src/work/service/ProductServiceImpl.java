@@ -24,8 +24,8 @@ public class ProductServiceImpl {
 	public Product findById(int id){
 		return (Product) productDao.findById(id);
 	}
-	public Product findByTypeId(int producttypeid){
-		return (Product)this.productDao.findByTypeId(producttypeid);
-		
-	}
+//	public Product findByTypeId(int producttypeid){
+//		return (Product)this.productDao.findByTypeId(producttypeid);
+//		
+//	}
 }

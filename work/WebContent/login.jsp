@@ -34,6 +34,7 @@
 <script src="<%=path %>/js/jquery.SuperSlide.2.1.1.js"></script>
 <script src="<%=path %>/js/layer.js"></script><link rel="stylesheet" href="<%=path %>/css/layer.css" id="layuicss-skinlayercss">
 <script src="<%=path %>/js/main.js"></script>
+ 
 </head>
 <body style="zoom: 1;">
 <div class="header">
@@ -41,7 +42,8 @@
         <div class="index-headtopmain clearfix width1190">
             <div class="index-headtoptitle fl">谢谢你长得那么好看还来光顾小5家</div>
             <ul class="index-headtoprnav fr">
-                        <a href="<%=path %>/login.jsp">
+            
+                        <a href="<%=path %>/login.jsp" >
                             <li>登录</li>
                         </a>
                         <a href="<%=path%>/regist.jsp">
@@ -162,7 +164,8 @@
 									out.print("<font color='red'>"+errorinfo1+"</font>");
 								}
 						%>
-	               			<input type="submit" value="登录">
+	               			<input type="submit" value="登录" id="a">
+	               			
                		    </form> 
                       </div>
                      

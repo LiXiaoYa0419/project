@@ -86,6 +86,15 @@
 }
  
     </script>
+    <script type="text/javascript">
+$(function () {
+	    	if('${user.loginName }' != "" ){
+	    		$("a").remove("#b");
+	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		document.getElementById('a').innerHTML = html;
+	    	}
+	    });
+</script>
 </head>
 <body style="zoom: 1;">
 	<div class="header">
@@ -93,8 +102,12 @@
         <div class="index-headtopmain clearfix width1190">
             <div class="index-headtoptitle fl">谢谢你长得那么好看还来光顾小5家</div>
             <ul class="index-headtoprnav fr">
-                <a href="<%=path%>/login.jsp""><li>登录</li></a>
-                <a href="<%=path%>/regist.jsp"> <li>注册</li></a>
+                <a href="<%=path %>/login.jsp" >
+                            <li>登录</li>
+                        </a>
+                <a href="<%=path%>/regist.jsp">
+                            <li>注册</li>
+                </a>
 				<a href="http://www.5kcake.com/Page/31">
 					<li class="padleft">关于我们</li>
                 </a>
@@ -189,7 +202,7 @@
              	          用户名:<input type="text" id="loginName" name="loginName"/><span id="checkUN"></span><br><br>
                		密码:&nbsp;&nbsp;&nbsp;<input type="password" name="password" id="password" ><br><br>
                		邮箱:&nbsp;&nbsp;&nbsp;<input type="text"  name="email"  id='email' onclick="return judge();"/><br><br><br>
-               		&nbsp;&nbsp;<input type="submit" value="注册" />
+               		&nbsp;&nbsp;<input type="submit" value="注册" id="b"/>
                		
                </form>
             </div>

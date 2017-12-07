@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -17,13 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.fabric.Response;
-
-import work.entity.CartItem;
-import work.entity.Product;
+import work.entity.Order;
 import work.entity.User;
 import work.service.UserServiceImpl;
 
@@ -81,10 +77,16 @@ public class UserController {
 	
 	}
 	
-
-
-	
-	
+	@RequestMapping(value="/addorder")
+	public String addOrderUser(HttpSession session,Order o){
+		Order order = this.userService.addOrderUser(o);
+		if(order != null){
+			session.setAttribute("order", order);
+			return "order";
+		}else{
+			return "order";
+		}
+	}
 }
 
 	

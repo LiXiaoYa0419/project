@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import work.entity.Order;
 import work.entity.Product;
 import work.entity.User;
 
@@ -39,13 +40,32 @@ public class UserDaoImpl {
           
         return (User) query.uniqueResult();  
     }  
-	 
 	
-	public void updateUser(User user) {
-		Session session = sessionFactory.getCurrentSession();
-		session.update(user);
+	public Order addOrderUser(Order o){
+		if(o.getAddress() != "" && o.getName() != "" && o.getPhone() != ""){
+			this.sessionFactory.getCurrentSession().save(o);
+			return o;
+		}else
+			return null;
+	} 
+	public Order findByAddress(String address){
+		String hql = "from Order o where o.address=?";  
+        Query query = this.sessionFactory.getCurrentSession().createQuery(hql);  
+        query.setParameter(0, address);
+        return (Order)query.uniqueResult();
+    } 
+	public Order findByUserName(String name){
+		String hql = "from Order o where o.name=?";  
+        Query query = this.sessionFactory.getCurrentSession().createQuery(hql);  
+        query.setParameter(0, name);
+        return (Order)query.uniqueResult();
 	}
-	 
+	public Order findByPhone(String phone){
+		String hql = "from Order o where o.phone=?";  
+        Query query = this.sessionFactory.getCurrentSession().createQuery(hql);  
+        query.setParameter(0, phone);
+        return (Order)query.uniqueResult();
+	}
 }
    
 

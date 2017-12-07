@@ -33,7 +33,15 @@
 <script src="<%=path %>/js/jquery.SuperSlide.2.1.1.js"></script>
 <script src="<%=path %>/js/layer.js"></script><link rel="stylesheet" href="<%=path %>/css/layer.css" id="layuicss-skinlayercss">
 <script src="<%=path %>/js/main.js"></script>
-
+<script type="text/javascript">
+$(function () {
+	    	if('${user.loginName }' != "" ){
+	    		$("a").remove("#b");
+	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		document.getElementById('a').innerHTML = html;
+	    	}
+	    });
+</script>
 </head>
 <body style="zoom: 1;">
 
@@ -47,18 +55,17 @@
         <div class="index-headtopmain clearfix width1190">
             <div class="index-headtoptitle fl">谢谢你长得那么好看还来光顾小5家</div>
             <ul class="index-headtoprnav fr">
-                        <a href="<%=path%>/login.jsp">
-
-                            
+                        <a href="<%=path %>/login.jsp" >
+                            <li id="a">登录</li>
                         </a>
-                        <a href="<%=path%>/index.jsp">
-                            <li>退出</li>
+                        <a href="<%=path%>/regist.jsp">
+                            <li id="b">注册</li>
                         </a>
 
                 <a href="http://www.5kcake.com/Page/31">
                     <li class="padleft">关于我们</li>
                 </a>
-                <a target="_blank" href="<%=path%>/cart.jsp">
+                <a target="_blank" href="#">
                     <li style="margin-right: 0;">我的购物车</li>
                 </a>
             </ul>
@@ -146,7 +153,7 @@
             <ol class="clearfix">
                 <li class="width240 nocenter clearfix"><input type="checkbox" class="selectall">全选</li>
                 <li class="width200">商品信息</li>
-                
+				<li class="width208">规格</li>
                 <li class="width154">单价</li>
                 <li class="width145">数量</li>
                 <li class="width154">小计</li>
@@ -157,18 +164,22 @@
             <ul>
 	 						<li class="allchioceli clearfix">
                                 <div class="width240 nocenter neir clearfix">
-                                            <input type="checkbox" class="checkdp" data-cartids="" data-optids="">
+                                   <input type="checkbox" class="checkdp" data-cartids="" data-optids="${p.id }">
 
 					
                                     <img src="${cart.value.product.imgs }" alt="">
                                 </div>
                               
                                 <div class="width200 neir xinxi">${cart.value.product.name }</div>
-                                 
-                            
-                                <div class="width154 neir linehight126 danjia" style="color: #666;">
-                                    ¥<span style="color: #666;" class="danjia-xx">${cart.value.product.price }</span>
+                                <c:forEach items="${ps }" var="ps">
+                                 <div class="width208 neir guig">
+                                  ${ps.size }
                                 </div>
+                            	
+                                <div class="width154 neir linehight126 danjia" style="color: #666;">
+                                    ¥<span style="color: #666;" class="danjia-xx">${ps.discountprice }</span>
+                                </div>
+                                </c:forEach>
                                 <div class="width145 neir numout">
                                     <div class="cheap-num">
                                         <div style="margin-top: 36px; margin-left: 38px;" class="num-box">
@@ -181,7 +192,7 @@
                                 <div class="width154 neir linehight126 peice-danjian" style="color: #c0a85f;">
                                     ¥<span class="peice-danjianxx">${cart.value.product.price*cart.value.count }</span>
                                 </div>
-                                <div class="width80 neir linehight126 shanchu" data-cartid="<%=path%>/register/removeProduct?id=${p.id}">删除</div>
+                                <div class="width80 neir linehight126 shanchu"><a href="<%=path %>/product/removeProduct?id=${cart.value.product.id}">删除</a></div>
                             </li>
                            
 
@@ -200,12 +211,11 @@
                                     <img src="<%=path %>/imgs/04fdaddf-7ac0-46b0-a0b6-d3ba3fdd69a6.png_700x500.jpeg">
                                 </div>
                                 <div class="width200 neir xinxi">标配外自选餐具</div>
-                                <div class="width208 neir guig">
-                                    <input type="text" class="number" placeholder="输入你想要的数字">
-                                </div>
                                 <div class="width154 neir linehight126 danjia" style="color: #666;">
                                     ¥<span style="color: #666;" class="danjia-xx">0.50</span>
                                 </div>
+                               
+                                
                                 <div class="width145 neir numout">
                                     <div class="cheap-num">
                                         <div style="margin-top: 36px; margin-left: 38px;" class="num-box">
@@ -233,13 +243,12 @@
 <div class="shopCar-pricebox width1190">
     <div class="fl shopCar-priceboxl">
         <input type="checkbox" class="shopCar-allchionce selectall1">全选
-        <span class="shopCar-shixiao fr">清除失效</span>
-        <span class="shopC-shanc fr">删除</span>
+        
     </div>
     <div class="fr shopCar-priceboxr">
         <div class="clearfix">
             <div class="zongji fl">商品总计：<span class="shopCar-price">0</span></div>
-            <button class="fr jiesuan">去结算</button>
+            <button class="fr jiesuan"><a href="<%=path%>/order.jsp">去结算</a></button>
         </div>
         <a class="fr qushop" href="<%=path %>/product/list" style="display: block"><span>继续购物&gt;&gt;</span></a>
     </div>
