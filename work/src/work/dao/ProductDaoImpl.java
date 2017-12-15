@@ -24,14 +24,8 @@ public class ProductDaoImpl {
 	}
  	 public Product findById(int id) {
  		return (Product)this.sessionFactory.getCurrentSession().get(Product.class, id);
- 	    }
-// 	 public Product findByTypeId(int producttypeid){
-// 			String hql = "from Product where producttypeid = ?";
-// 			Query query=(Query) this.sessionFactory.getCurrentSession().createQuery(hql);
-// 			query.setParameter(0,producttypeid);
-// 			return (Product)query.uniqueResult();
-// 			
-// 	}
+ 	 }
+ 
  	 
 	
 }

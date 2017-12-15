@@ -37,7 +37,7 @@
 $(function () {
 	    	if('${user.loginName }' != "" ){
 	    		$("a").remove("#b");
-	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		var html = "<a href=' "+'<%=path %>/personal1.jsp'+" '>"+'${user.loginName }'+"</a>";
 	    		document.getElementById('a').innerHTML = html;
 	    	}
 	    });
@@ -80,61 +80,54 @@ $(function () {
             </div>
         </div>
     </div>
-    <div class="index-headnav">
+       <div class="index-headnav">
         <div class="index-headnavmain clearfix width1190">
             <ul class="index-headnavmainul clearfix">
-                <li class="active index-navli">
+                <li class="index-navli">
                     <span class="nav-shugang"></span>
                     <a href="<%=path %>/index.jsp">
-                        <span class="index-headnavmainulspan margintop18">首页</span>
-                        <span class="index-headnavmainulspan1 margintop8">Home</span>
+                        <span class="index-headnavmainulspan margintop18">首页</span><span class="index-headnavmainulspan1 margintop8">Home</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                     <a href="<%=path%>/product/list">
+                    <a href="<%=path %>/product/list">
                     <span class="index-headnavmainulspan margintop18">产品目录</span>
                     <span class="index-headnavmainulspan1 margintop8">Products</span>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/HotGoods">
-                    <span class="index-headnavmainulspan margintop18">热销推荐</span>
-                    <span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
+                    <a href="<%=path%>/product/hotlist">
+                    <span class="index-headnavmainulspan margintop18">热销产品</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/Page/51">
-                        <span class="index-headnavmainulspan margintop18">最新活动</span>
-                        <span class="index-headnavmainulspan1 margintop8">Latest activities</span>
+                    <a href="<%=path%>/product/newProduct">
+                        <span class="index-headnavmainulspan margintop18">最新产品</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
                     <a href="http://www.5kcake.com/goodsList">
-                        <span class="index-headnavmainulspan margintop18">鲜花专区</span>
-                        <span class="index-headnavmainulspan1 margintop8">Flowers</span>
+                        <span class="index-headnavmainulspan margintop18">鲜花专区</span><span class="index-headnavmainulspan1 margintop8">Flowers</span>
+                    </a>
+                </li>
+
+                <li class="index-navli active">
+                    <span class="nav-shugang"></span>
+                    <a href="<%=path%>/personal1.jsp">
+                        <span class="index-headnavmainulspan margintop18">会员中心</span><span class="index-headnavmainulspan1 margintop8">Member Center</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
-                    <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/WebPersonal">
-                        <span class="index-headnavmainulspan margintop18">会员中心</span>
-                        <span class="index-headnavmainulspan1 margintop8">Member Center</span>
-                    </a>
-                </li>
-
-                <li class="index-navli">
-                    <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/Page/41">
-                        <span class="index-headnavmainulspan margintop18">团购服务</span>
-                        <span class="index-headnavmainulspan1 margintop8">bulk purchasing</span>
+                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/Page/41">
+                        <span class="index-headnavmainulspan margintop18">团购服务</span><span class="index-headnavmainulspan1 margintop8">bulk purchasing</span>
                     </a>
                 </li>
 
@@ -176,8 +169,10 @@ $(function () {
                                     <span class="napolun-introname">${list.name}</span>
                                     <span class="napolun-introprice">￥${list.price }</span>
                                     <span class="napolun-introprice">折扣价：￥${list.discountprice }</span>
+                                   
+                                    
                                 </div>
-                                <span class="hotsell"></span>
+                               
                             </li>
                         </a>
                        

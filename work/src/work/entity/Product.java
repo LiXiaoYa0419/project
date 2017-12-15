@@ -11,16 +11,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="product")
-public class Product {
+public class Product implements java.io.Serializable{
 	
 	private int id;
 	private String name;
 	private String description;
-	private int price;
+	private String price;
 	private String imgs;
 	private String img1;
 	private String img2;
 	private String img3;
+	private String productTime;
+	private String productType;
 	@Id
 	@GeneratedValue(generator="my")
     @GenericGenerator(name = "my", strategy = "native")
@@ -53,18 +55,24 @@ public class Product {
 		this.imgs = imgs;
 	}
 	private int discountprice;
- 	private int producttypeid;
- 	public int getProducttypeid() {
- 		return producttypeid;
- 	}
- 	public void setProducttypeid(int producttypeid) {
- 		this.producttypeid = producttypeid;
- 	}
+ 	 
 	public int getDiscountprice() {
 		return discountprice;
 	}
 	public void setDiscountprice(int discountprice) {
 		this.discountprice = discountprice;
+	}
+	public String getProductTime() {
+		return productTime;
+	}
+	public void setProductTime(String productTime) {
+		this.productTime = productTime;
+	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
 	}
 	public String getImgs() {
 		return imgs;
@@ -84,10 +92,10 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	

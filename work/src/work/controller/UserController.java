@@ -2,6 +2,8 @@ package work.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,15 +14,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.hibernate.SessionFactory;
+ 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import work.entity.Order;
 import work.entity.User;
+import work.entity.cart.CartItem;
 import work.service.UserServiceImpl;
 
 @Controller
@@ -77,16 +79,10 @@ public class UserController {
 	
 	}
 	
-	@RequestMapping(value="/addorder")
-	public String addOrderUser(HttpSession session,Order o){
-		Order order = this.userService.addOrderUser(o);
-		if(order != null){
-			session.setAttribute("order", order);
-			return "order";
-		}else{
-			return "order";
-		}
-	}
+	
+	
+	
+	
 }
 
 	

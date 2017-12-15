@@ -12,20 +12,13 @@ import org.hibernate.annotations.GenericGenerator;
 public class ProductSize {
 	private int id;
 	private int productid;
-	private String size;
-	private int price;
-	private int discountprice;
-	public int getPrice() {
+	private int size;
+	private String price;
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
-	}
-	public int getDiscountprice() {
-		return discountprice;
-	}
-	public void setDiscountprice(int discountprice) {
-		this.discountprice = discountprice;
 	}
 	@Id
     @GeneratedValue(generator="my")
@@ -42,10 +35,11 @@ public class ProductSize {
 	public void setProductid(int productid) {
 		this.productid = productid;
 	}
-	public String getSize() {
+	public int getSize() {
 		return size;
 	}
-	public void setSize(String size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 }
+

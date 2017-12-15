@@ -1,27 +1,24 @@
 package work.service;
 
-import java.io.IOException;
-import java.util.List;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import work.dao.ProductDaoImpl;
 import work.dao.UserDaoImpl;
-import work.entity.CartItem;
-import work.entity.Order;
+
+import work.entity.OrderItem;
 import work.entity.Product;
 import work.entity.User;
+import work.entity.cart.CartItem;
 
 @Service
-@Transactional(readOnly=true)
-public class UserServiceImpl {
+ 
+public class UserServiceImpl{
 	@Resource
 	private UserDaoImpl userDao;
 	 
@@ -48,35 +45,12 @@ public class UserServiceImpl {
 		else 
 			return null;
     }  
+	public Product addProductToCart(int id){
+		return (Product) userDao.selectById(id);
+	}
 	
-	public Order addOrderUser(Order o){
-		Order order =this.userDao.addOrderUser(o);
-		if(order != null)
-			return order;
-		else 
-			return null;
-	}
-	public Order findByUserName(String name){
-		Order order =this.userDao.findByUserName(name);
-		if(order != null)
-			return order;
-		else 
-			return null;
-		
-	}
-	public Order findByAddress(String address) {
-		Order order =this.userDao.findByAddress(address);
-		if(order != null)
-			return order;
-		else 
-			return null;
-    }  
-	public Order findByPhone(String phone){
-		Order order =this.userDao.findByPhone(phone);
-		if(order != null)
-			return order;
-		else 
-			return null;
+	public void updateInfo(String loginName,String newPassword) {
+		this.userDao.updateInfo(loginName, newPassword);
 	}
 	 
 }

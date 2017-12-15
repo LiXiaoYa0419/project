@@ -86,15 +86,7 @@
 }
  
     </script>
-    <script type="text/javascript">
-$(function () {
-	    	if('${user.loginName }' != "" ){
-	    		$("a").remove("#b");
-	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
-	    		document.getElementById('a').innerHTML = html;
-	    	}
-	    });
-</script>
+   
 </head>
 <body style="zoom: 1;">
 	<div class="header">
@@ -104,7 +96,7 @@ $(function () {
             <ul class="index-headtoprnav fr">
                 <a href="<%=path %>/login.jsp" >
                             <li>登录</li>
-                        </a>
+               	</a>
                 <a href="<%=path%>/regist.jsp">
                             <li>注册</li>
                 </a>
@@ -144,22 +136,22 @@ $(function () {
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path %>/list.jsp">
+                    <a href="<%=path %>/product/list">
                     <span class="index-headnavmainulspan margintop18">产品目录</span>
                     <span class="index-headnavmainulspan1 margintop8">Products</span>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/HotGoods">
-                    <span class="index-headnavmainulspan margintop18">热销推荐</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
+                    <a href="<%=path%>/product/hotlist">
+                    <span class="index-headnavmainulspan margintop18">热销产品</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/Page/51">
-                        <span class="index-headnavmainulspan margintop18">最新活动</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
+                    <a href="<%=path%>/product/newProduct">
+                        <span class="index-headnavmainulspan margintop18">最新产品</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
                     </a>
                 </li>
 
@@ -172,7 +164,7 @@ $(function () {
 
                 <li class="index-navli active">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/WebPersonal">
+                    <a href="<%=path%>/personal1.jsp">
                         <span class="index-headnavmainulspan margintop18">会员中心</span><span class="index-headnavmainulspan1 margintop8">Member Center</span>
                     </a>
                 </li>
@@ -202,7 +194,7 @@ $(function () {
              	          用户名:<input type="text" id="loginName" name="loginName"/><span id="checkUN"></span><br><br>
                		密码:&nbsp;&nbsp;&nbsp;<input type="password" name="password" id="password" ><br><br>
                		邮箱:&nbsp;&nbsp;&nbsp;<input type="text"  name="email"  id='email' onclick="return judge();"/><br><br><br>
-               		&nbsp;&nbsp;<input type="submit" value="注册" id="b"/>
+               		&nbsp;&nbsp;<input type="submit" value="注册"/>
                		
                </form>
             </div>

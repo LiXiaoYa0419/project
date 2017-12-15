@@ -1,6 +1,10 @@
 package work.controller;
 
  
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
  
 import java.util.List;
@@ -16,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  
 import org.springframework.web.bind.annotation.RequestParam;
 
-import work.entity.CartItem;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+
 import work.entity.Product;
 import work.entity.ProductSize;
 import work.entity.User;
@@ -48,64 +53,59 @@ public class ProductController {
 		request.setAttribute("p", p);
 		return "content";
 	}
-//	@RequestMapping("/type")
-//	public String findByTypeId(@RequestParam("producttypeid") int producttypeid,HttpServletRequest request){
-//		Product tpl = this.productService.findByTypeId(producttypeid);
-//		request.setAttribute("tpl", tpl);
-//		return "typeproduct";
-//	}
-	 
-	
-	@RequestMapping(value="/addProductToCart")
-	public String addToCart(@RequestParam("id") int id,HttpServletRequest request,HttpSession session){
-		String id1 = String.valueOf(id);
-		Product product = productService.findById(id);
+	@RequestMapping("/hotlist")
+	public String hotlist(Model model,HttpServletRequest request){
+		List<Product> list=this.productService.listProducts();
+		request.setAttribute("list", list);
+		model.addAttribute(list);
+		return "list";
+	}
+	@RequestMapping("/hot")
+	public String findByIds(@RequestParam(value="id") int id,Model model,HttpServletRequest request){
+		Product p = this.productService.findById(id);
 		List<ProductSize> ps =this.productSizeService.finds(id);
 		request.setAttribute("ps", ps);
-		User u1 = (User) session.getAttribute("user");
-		if(u1 == null) {
-			session.setAttribute("user", "请您先登录！再去下单！");
-			return "login";
-		}else{
-		 
-		Map<String,CartItem> cart = (Map<String, CartItem>) session.getAttribute("cart");
-		if(cart == null) {
-			cart = new HashMap<String,CartItem>();
-			
-			session.setAttribute("cart", cart);
-		}
-		if(cart.containsKey(id1)) {
-			CartItem ci = cart.get(id1);
-			ci.setCount(ci.getCount()+1);
-		}else {
-			CartItem ci = new CartItem();
-			ci.setProduct(product);
-			ci.setCount(1);
-			cart.put(id1, ci);
-		}
-		
-		return "cart";
-		
-		}
+		request.setAttribute("p", p);
+		return "hotproduct";
 	}
 	
-		
-		
-		
 	
-	@RequestMapping(value="/removeProduct")
-	public String removeProduct(@RequestParam("id") int id,HttpSession session) {
-		String id1 = String.valueOf(id);
-		Map<String,CartItem> cart = (Map<String, CartItem>) session.getAttribute("cart");
-		CartItem cartItem = cart.get(id1);
-		int count = cartItem.getCount();
-		cartItem.setCount(count-1);
-		int count2 = cartItem.getCount();
-		if(count2 < 1) {
-			cart.remove(id1);
-		}
-		return "cart";
+	@RequestMapping("/newProduct")
+	public String newProduct(HttpSession session) throws ParseException {
+		
+		List<Product> list = productService.listProducts();
+		ListSortN(list);
+		list = list.subList(0, 4);
+		session.setAttribute("list", list);
+		return "newProduct";
 	}
+	
+    private static void ListSortN(List<Product> list) {  
+        Collections.sort(list, new Comparator<Product>() {  
+            @Override  
+            public int compare(Product o1, Product o2) {  
+                SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
+                try {  
+                    Date dt1 = format.parse(o1.getProductTime());  
+                    Date dt2 = format.parse(o2.getProductTime());  
+                    if (dt1.getTime() < dt2.getTime()) {  
+                        return 1;  
+                    } else if (dt1.getTime() > dt2.getTime()) {  
+                        return -1;  
+                    } else {  
+                        return 0;  
+                    }  
+                } catch (Exception e) {  
+                    e.printStackTrace();  
+                }  
+                return 0;  
+            }  
+        });  
+    }
+
+	 
+	
+	
 	
 	
 }

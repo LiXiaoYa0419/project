@@ -37,7 +37,7 @@
 $(function () {
 	    	if('${user.loginName }' != "" ){
 	    		$("a").remove("#b");
-	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		var html = "<a href=' "+'<%=path %>/personal1.jsp'+" '>"+'${user.loginName }'+"</a>";
 	    		document.getElementById('a').innerHTML = html;
 	    	}
 	    });
@@ -76,57 +76,53 @@ $(function () {
             </div>
         </div>
     </div>
-    <div class="index-headnav">
+      <div class="index-headnav">
         <div class="index-headnavmain clearfix width1190">
             <ul class="index-headnavmainul clearfix">
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path%>/index.jsp">
-                        <span class="index-headnavmainulspan margintop18">首页</span>
-                        <span class="index-headnavmainulspan1 margintop8">Home</span>
+                    <a href="<%=path %>/index.jsp">
+                        <span class="index-headnavmainulspan margintop18">首页</span><span class="index-headnavmainulspan1 margintop8">Home</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path%>/product/list">
-                   	<span class="">产品目录</span>
+                    <a href="<%=path %>/product/list">
+                    <span class="index-headnavmainulspan margintop18">产品目录</span>
                     <span class="index-headnavmainulspan1 margintop8">Products</span>
-                    <div class="index-navtwo" style="overflow: hidden; display: none; height: 200px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
-               		</a>
                 </li>
 
-                <li class="index-navli">
+               <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path %>/product/LastedProduct">
-                    <span class="index-headnavmainulspan margintop18">热销推荐</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
+                    <a href="<%=path%>/product/hotlist">
+                    <span class="index-headnavmainulspan margintop18">热销产品</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/Page/51">
-                        <span class="index-headnavmainulspan margintop18">最新活动</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
+                    <a href="<%=path%>/product/newProduct">
+                        <span class="index-headnavmainulspan margintop18">最新产品</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
                     </a>
                 </li>
 
-                <li class="index-navli active">
+                <li class="index-navli">
                     <span class="nav-shugang"></span>
                     <a href="http://www.5kcake.com/goodsList">
                         <span class="index-headnavmainulspan margintop18">鲜花专区</span><span class="index-headnavmainulspan1 margintop8">Flowers</span>
                     </a>
                 </li>
 
-                <li class="index-navli">
+                <li class="index-navli active">
                     <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/WebPersonal">
+                    <a href="<%=path%>/personal1.jap">
                         <span class="index-headnavmainulspan margintop18">会员中心</span><span class="index-headnavmainulspan1 margintop8">Member Center</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
-                    <span class="nav-shugang"></span>
-                    <a href="http://www.5kcake.com/Page/41">
+                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/Page/41">
                         <span class="index-headnavmainulspan margintop18">团购服务</span><span class="index-headnavmainulspan1 margintop8">bulk purchasing</span>
                     </a>
                 </li>

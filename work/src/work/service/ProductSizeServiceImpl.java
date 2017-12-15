@@ -25,3 +25,4 @@ public class ProductSizeServiceImpl {
 		return (List<ProductSize>)productsizedao.findById(id);
 	}
 }
+

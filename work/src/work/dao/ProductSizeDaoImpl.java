@@ -18,9 +18,10 @@ public class ProductSizeDaoImpl {
 	private SessionFactory sessionFactory;
 	
 	public List<ProductSize> findById(int id){
-		String hql = "from ProductSize where productid = ?";
+		String hql = "from ProductSize where productid =:productid";
 		Query query=(Query) this.sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter(0,id);
+		query.setParameter("productid",id);
 		return query.list();
 	}
+
 }

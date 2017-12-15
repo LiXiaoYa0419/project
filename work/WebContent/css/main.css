@@ -507,7 +507,7 @@
 }
 
 .hotsell {
-    background: url("../img1/logo9.png") no-repeat center;
+    background: url("<%=path%>/imgs/logo9.png") no-repeat center;
     width: 43px;
     height: 44px;
     position: absolute;

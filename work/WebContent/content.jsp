@@ -34,10 +34,16 @@
 $(function () {
 	    	if('${user.loginName }' != "" ){
 	    		$("a").remove("#b");
-	    		var html = "<a href=' "+'<%=path %>/product/addProductToCart'+" '>"+'${user.loginName }'+"</a>";
+	    		var html = "<a href=' "+'<%=path %>/personal1.jsp'+" '>"+'${user.loginName }'+"</a>";
 	    		document.getElementById('a').innerHTML = html;
 	    	}
 	    });
+</script>
+<script type="text/javascript">
+function addProduct()
+{
+    window.alert("添加成功");
+}
 </script>
 
 </head>
@@ -78,47 +84,47 @@ $(function () {
             </div>
         </div>
     </div>
-    <div class="index-headnav">
+        <div class="index-headnav">
         <div class="index-headnavmain clearfix width1190">
             <ul class="index-headnavmainul clearfix">
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path %>/index.jsp/">
-                        <span class="index-headnavmainulspan margintop18">首页</span>
-                        <span class="index-headnavmainulspan1 margintop8">Home</span>
+                    <a href="<%=path %>/index.jsp">
+                        <span class="index-headnavmainulspan margintop18">首页</span><span class="index-headnavmainulspan1 margintop8">Home</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
                     <span class="nav-shugang"></span>
-                    <a href="<%=path %>/list.jsp/">
+                    <a href="<%=path %>/product/list">
                     <span class="index-headnavmainulspan margintop18">产品目录</span>
                     <span class="index-headnavmainulspan1 margintop8">Products</span>
-                    <div class="index-navtwo" style="overflow: hidden; display: none; height: 159px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
-                    </a>
-                    </div>
                 </li>
 
-                <li class="index-navli">
-                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/HotGoods">
-                    <span class="index-headnavmainulspan margintop18">热销推荐</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
+               <li class="index-navli">
+                    <span class="nav-shugang"></span>
+                    <a href="<%=path%>/product/hotlist">
+                    <span class="index-headnavmainulspan margintop18">热销产品</span><span class="index-headnavmainulspan1 margintop8">Hot-selling</span>
                     </a>
                 </li>
 
                 <li class="index-navli">
-                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/Page/51">
-                        <span class="index-headnavmainulspan margintop18">最新活动</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
+                    <span class="nav-shugang"></span>
+                    <a href="<%=path%>/product/newProduct">
+                        <span class="index-headnavmainulspan margintop18">最新产品</span><span class="index-headnavmainulspan1 margintop8">Latest activities</span>
                     </a>
                 </li>
 
-                <li class="index-navli active">
-                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/goodsList">
+                <li class="index-navli">
+                    <span class="nav-shugang"></span>
+                    <a href="http://www.5kcake.com/goodsList">
                         <span class="index-headnavmainulspan margintop18">鲜花专区</span><span class="index-headnavmainulspan1 margintop8">Flowers</span>
                     </a>
                 </li>
 
-                <li class="index-navli">
-                    <span class="nav-shugang"></span><a href="http://www.5kcake.com/WebPersonal">
+                <li class="index-navli active">
+                    <span class="nav-shugang"></span>
+                    <a href="<%=path%>/personal1.jsp">
                         <span class="index-headnavmainulspan margintop18">会员中心</span><span class="index-headnavmainulspan1 margintop8">Member Center</span>
                     </a>
                 </li>
@@ -176,7 +182,7 @@ $(function () {
         </div>
     </div>
     <div style="" class="cheap-info-doll">
-     <a href="<%=path %>/product/content?id=${p.id }">
+     
         <div class="cheap-info-tit">${p.name }</div>
         <div class="cheap-info-code">商品编码:${p.id }</div>
         <div class="cheap-info-info">
@@ -205,11 +211,11 @@ $(function () {
                 <p style="color: #999;">分类</p>
             </div>
             
-            <div  style="width:160px;height:30px;">
+            <div  style="width:180px;height:30px;">
            	<c:forEach items="${ps }" var="ps">
                 <ul class="classificationul clearfix">
-                                    <li class="attri active" data-unit="个" data-stock="9999" data-nowprice="${ps.discountprice }" data-singleid="${ps.productid }" data-attribute="${ps.size }" data-original="${ps.price }">
-										${ps.size }<br>
+                                    <li class="attri active" data-unit="个" data-stock="9999" data-nowprice="${ps.price }" data-singleid="${ps.productid }" data-attribute="${ps.size }" data-original="${ps.price }">
+										${ps.size }磅 <br>
                                            <span class="fenlchioce"></span>
                                     </li>
                </ul>
@@ -221,7 +227,7 @@ $(function () {
        
         <div class="end-submit">
             <span class="g-car"><a class="jjg" href="<%=path%>/product/content?id=${p.id}"">立即购买</a></span>
-            <span class="g-submit"><a class="jjh" target="_top" href="<%=path%>/product/addProductToCart?id=${p.id}">加入购物车</a></span>
+            <span class="g-submit"><a class="jjh" target="_top" href="<%=path %>/cart/addProductToCart?id=${p.id }" onClick="addProduct()">加入购物车</a></span>
             
         </div>
 
@@ -238,16 +244,10 @@ $(function () {
 		</a>
 
     </div>
-    <div class="s-alert-sccess s-car-alert">
-    <span class="close"></span>
-    <span class="sign"></span>
-    <h3>成功加入购物车！</h3>
-    <p>
-        您可以<a href="<%=path%>/product/addProductToCart?id=${p.id}">去购物车结算</a>
-    </p>
+    
 </div>
  </div>  
-</div>
+
 <!-- PAGE CONTENT ENDS -->
 	<div class="footer">
         <div class="width1190">
